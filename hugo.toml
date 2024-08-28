@@ -1,4 +1,31 @@
 baseURL = 'https://blog.sandropischinger.de/'
 languageCode = 'en-us'
-title = 'blog'
+title = "Sandro's geek blog"
 theme = 'cactus'
+copyright = "Sandro Pischinger"
+[params]
+  colortheme = "dark"
+  mainSection = "posts"
+  showProjectsList = true
+  projectsUrl = "https://github.com/psandro"
+  description = "This is my personal blog where I post thinks I make and build."
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 4
