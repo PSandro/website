@@ -44,37 +44,30 @@ Calculates the crc value of a given file. Uses crc16 library: https://pypi.pytho
 
 
 modified by Sandro Pischinger on 31.5.2024
-    - set seed to 0xFFFF (default)
+    - set seed to 0xFFF (default)
     - remove unused blocksize
 """
 import struct
-from optparse import OptionParser
+import argparse
 from crc16 import crc16xmodem
 
 
 def main():
-    parser = OptionParser()
-    parser.set_description("Usage: python calc_crc filename")
-    parser.add_option('-f', '--info_file', dest='info_file', help='output file for firmware metadata', metavar='INFO_FILE', default=None)
+    parser = argparse.ArgumentParser(description="Calculate CRC for a given file")
+    parser.add_argument('filename', help="The binary file to calculate the CRC for")
+    parser.add_argument('-f', '--info_file', help='Output file for firmware metadata')
 
-    (options, args) = parser.parse_args()
+    args = parser.parse_args()
 
-    if len(args) < 1:
-        print(parser.print_help())
-        return
-
-    crc = 0xFFFF
-
-    with open(args[0], "rb") as f:
+    with open(args.filename, "rb") as f:
         binData = f.read()
 
-    crc = crc16xmodem(binData, crc)
-    print("CRC overall : 0x%02x" % (crc))
+    crc = crc16xmodem(binData, 0xFFFF)
+    print(f"CRC overall: 0x{crc:04x}")
 
-    if options.info_file:
-        with open(options.info_file, "wb+") as finfo:
-            res = struct.pack(">H", crc)
-            finfo.write(res)
+    if args.info_file:
+        with open(args.info_file, "wb") as finfo:
+            finfo.write(struct.pack(">H", crc))
 
 
 if __name__ == '__main__':
