@@ -4,7 +4,7 @@ date = 2024-08-29T16:16:36+02:00
 draft = true
 +++
 
-Having to opportunity to fix and modernize a large format 3d-printer at my local makerspace sounds like a cool challenge! Especially when it's about a professional printer (with a profesisonal pricetag) that you usually don't have access to as a hobbyist.
+Having the opportunity to fix and modernize a large format 3d-printer at my local makerspace sounds like a cool challenge! Especially when it's about a professional printer (with a profesisonal pricetag) that you usually don't have access to as a hobbyist.
 The exact type of this printer model is unknown to me, but it is some early version of the `BigRep ONE`, probably a `BigRep ONE.3b` manufactured in 2016 or so.
 
 ## Investigating the BigRep ONE
@@ -20,7 +20,7 @@ This BigRep is equipped with two extruders for 2.85mm wide filament which can be
 They used the heat sink from a V6 hotend and added a custom aluminium heatblock with two 24V-50W heater elements in parallel. The nozzle is a standard volcano nozzle. Heatblock and heatsink are connected using a custom heatbreak which reaches really long into the heatblock - not optimal.
 
 ## Installing Klipper on PC
-I went for a fresh install of Debian for the existing embedded PC. Since Klipper is usually run on RaspberryPis and the default username is 'pi' that is also what I went with for the installation.
+I went for a fresh install of Debian for the existing embedded PC. Since Klipper is usually run on RaspberryPis and the default username is 'pi' that is also what I went with for this installation.
 Once Debian was running, the [KIAUH](https://github.com/dw-0/kiauh) installer did the rest.
 
 ## Compiling Klipper for MCU
