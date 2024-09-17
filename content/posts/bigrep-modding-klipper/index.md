@@ -1,6 +1,6 @@
 +++
 title = 'BigRep Modding Klipper'
-date = 2024-08-29T16:16:36+02:00
+date = 2024-09-17T16:16:36+02:00
 draft = true
 +++
 
@@ -23,14 +23,17 @@ They used the heat sink from a V6 hotend and added a custom aluminium heatblock 
 I went for a fresh install of Debian for the existing embedded PC. Since Klipper is usually run on RaspberryPis and the default username is 'pi' that is also what I went with for this installation.
 Once Debian was running, the [KIAUH](https://github.com/dw-0/kiauh) installer did the rest.
 
-## Compiling Klipper for MCU
-The following settings are used:
+## Preparing Klipper for the BoogieBoard
+With the BoogieBoard being based on the Smoothieboard, the klipper firmware configuration can be directly copied from the latter.
+I ended up configuring Klipper as following with `make menuconfig`: 
 ```
 Micro-controller Architecture -> LPC176x (Smoothieboard)
 Processor model -> lpc1769 (120 MHz)
 Bootloader offset -> 16KiB bootloader (Smoothieware bootloader)
 Communication interface -> USB
 ```
+
+After that we can compile klipper and get a binary file `klipper.bin` that we later rename to `firmware.bin`.
 
 
 ## Flashing MCU
@@ -44,7 +47,7 @@ Calculates the crc value of a given file. Uses crc16 library: https://pypi.pytho
 
 
 modified by Sandro Pischinger on 31.5.2024
-    - set seed to 0xFFF (default)
+    - set seed to 0xFFFF (default)
     - remove unused blocksize
 """
 import struct
@@ -77,8 +80,14 @@ if __name__ == '__main__':
 For flashing turn off the BigRep and unscrew the cover for the BoogieBoard. You should see a sd card(-holder) on the PCB right next to the bigrep logo. Place your thumb on the metal holder and gently push it to the right in order to open it. You can now remove the sd card and progress with placing the `firmware.bin` and matching `firmware.inf` file on the sd-card using a computer.
 Then insert the sd card back into the BoogieBoard and power up the machine. The firmware should now be flashed. You can confirm by either connecting to UART and check the debug output or inspect the `firmware.cur` file on the sd-card and compare it to your freshly compiled `firmware.bin`.
 
+Once klipper is flashed, the future flashing progress might be simplified by making use of Klipper's [SDCard updates](https://www.klipper3d.org/SDCard_Updates.html) feature.
+
 ## Mechanical Issues
+This BigRep had some strange layer shifts on the X-Axis. And with 'strange' I mean that the shift only appeared sometimes and always in the range of +/- 0.5cm of the original path.
+After a lot of troubleshooting I figured that this is caused by a loose setscrew at the pulley of the X-Stepper. Aparrently BigRep didn't use a key for connecting the two. Thus there was a lot of stress on the set screw which got loose after time. Inserting a key and a threadlocker fixed this issue. Furthermore I drilled a hole in the X-Gantry for easy access of this setscrew. 
 
 ## Hardware Modifications
+
+I decided to convert the existing hotend to a dual-drive extruder with an [E3D SuperVolcano](https://e3d-online.com/products/supervolcano-upgrade-kit). While redesigning the fan-duct, a blower fan was added as hotend fan. 
 
 ## Enclosure
