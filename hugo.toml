@@ -1,4 +1,4 @@
-baseURL = 'https://blog.sandropischinger.de/'
+baseURL = 'https://sandropischinger.de/'
 languageCode = 'en-us'
 title = "Sandro's geek blog"
 theme = 'cactus'
