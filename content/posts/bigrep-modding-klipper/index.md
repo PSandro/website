@@ -1,7 +1,6 @@
 +++
 title = 'BigRep Modding Klipper'
 date = 2024-09-17T16:16:36+02:00
-draft = true
 +++
 
 ![gantry](./images/gantry.jpg)
