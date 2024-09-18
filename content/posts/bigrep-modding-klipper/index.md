@@ -44,7 +44,7 @@ After that we can compile Klipper and get a binary file `klipper.bin` that we la
 
 ## Flashing MCU
 The usual flashing procedure for SmoothieBoards is to place a `firmware.bin` file on the sd card which gets renamed to `firmware.bin` after successful flashing. However, BigRep modified the bootloader in such a way so that a matching `firmware.inf` file is required in addition to the `firmware.bin`.
-This file only contains a CRC16-XMODEM checksum of the binary file and can be calculated using the following script and the python library [crc16](https://pypi.python.org/pypi/crc16/0.1.1).
+This file only contains a CRC16-XMODEM checksum of the binary file and can be calculated using the following script.
 
 ```python
 #!/usr/bin/env python3
@@ -55,11 +55,11 @@ Calculates the crc value of a given file. Uses crc16 library: https://pypi.pytho
 modified by Sandro Pischinger on 31.5.2024
     - set seed to 0xFFFF (default)
     - remove unused blocksize
+    - use binascii
 """
 import struct
 import argparse
-from crc16 import crc16xmodem
-
+import binascii
 
 def main():
     parser = argparse.ArgumentParser(description="Calculate CRC for a given file")
@@ -71,7 +71,7 @@ def main():
     with open(args.filename, "rb") as f:
         binData = f.read()
 
-    crc = crc16xmodem(binData, 0xFFFF)
+    crc = binascii.crc_hqx(binData, 0xFFFF)
     print(f"CRC overall: 0x{crc:04x}")
 
     if args.info_file:
