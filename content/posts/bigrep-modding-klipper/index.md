@@ -49,7 +49,7 @@ This file only contains a CRC16-XMODEM checksum of the binary file and can be ca
 ```python
 #!/usr/bin/env python3
 """
-Calculates the crc value of a given file. Uses crc16 library: https://pypi.python.org/pypi/crc16/0.1.1
+Calculates the crc value of a given file.
 
 
 modified by Sandro Pischinger on 31.5.2024
