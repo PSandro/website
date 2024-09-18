@@ -8,7 +8,7 @@ copyright = "Sandro Pischinger"
   mainSection = "posts"
   showProjectsList = true
   projectsUrl = "https://github.com/psandro"
-  description = "This is my personal blog where I post thinks I make and build."
+  description = "This is my personal blog where I post things I make and build."
 
 [[menu.main]]
 name = "Home"
