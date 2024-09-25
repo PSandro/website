@@ -9,6 +9,7 @@ copyright = "Sandro Pischinger"
   showProjectsList = true
   projectsUrl = "https://github.com/psandro"
   description = "This is my personal blog where I post things I make and build."
+  imprintUrl = "/impressum.html"
 
 [[menu.main]]
 name = "Home"
