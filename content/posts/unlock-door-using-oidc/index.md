@@ -32,7 +32,7 @@ Keep it simple and functional; This is what I went for, while maintaining a some
 
 ## Future Improvements 
 
-Security is one thing that might need some more attention. The django application is accessible via https and the ODIC flow seems secure when set up correctly. But the communication between the raspberry pi and the ESP32 happens over bare metal TCP sockets. The security thereof is dependent on the security of the network and firewall. In the future one might wrap these sockets with TLS, maybe event add a certificate for client side authentication. For now, the smart door lock has served its purpose well and has been quite reliable.
+Security is one thing that might need some more attention. The django application is accessible via https and the OIDC flow seems secure when set up correctly. But the communication between the raspberry pi and the ESP32 happens over bare metal TCP sockets. The security thereof is dependent on the security of the network and firewall. In the future one might wrap these sockets with TLS, maybe event add a certificate for client side authentication. For now, the smart door lock has served its purpose well and has been quite reliable.
 
 ## Project Links
 
