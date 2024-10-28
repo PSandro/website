@@ -27,6 +27,7 @@ This plan went through after successfully turning out the screws with the help o
 
 ![Brew Group](./images/brew_group.webp)
 
+## Repainting the Frame
 The next step was to remove all the rust from the case/frame. I decided to use the sadblasting machine for that purpose. This took quite a few hours but the result was worth it.
 
 ![Sandblasting](./images/sandblasting.webp)
