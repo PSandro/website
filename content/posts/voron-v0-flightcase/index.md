@@ -3,14 +3,14 @@ title = 'Flightcase for Voron V0.2'
 date = 2024-08-28T16:05:03+02:00
 +++
 
-![Box assembly finished](./images/assembly_finished.jpg)
+![Box assembly finished](./images/assembly_finished.webp)
 
 Some time ago I decided to build a voron 3d-printer. The voron 3d-printers are designed by a great community with lots of experience and dedication. While their larger models are most popular, I decided to go with the smallest one - the V0 with a build volume of `120mm x 120mm x 120mm` for portability reasons.
 
 When doing prototyping with friends or some hobby project I often wished to have my beloved voron v0.2 close by. Sadly it's too fragile for surving the transport with confidence; The countless hours invested in building and calibrating it might quickly go to waste if it takes damage while taking it outside my home lab. This is why it needed a strong and sturdy case to keep it safe for travels. A flightcase was needed.
 
 # Designing
-![CAD designing the case](./images/cad_design.png)
+![CAD designing the case](./images/cad_design.webp)
 
 I started with the design and decided on a material and hardware. It ended up being `6mm` wodden plate and some flightcase aluminium casemaker extrusions. After designing the whole thing in CAD it was ready for production.
 
@@ -33,14 +33,14 @@ I started with the design and decided on a material and hardware. It ended up be
 4 x | F1691 Penn Elcom F1691 - Gummifuß 25 x 25 mm mit Stahleinlage | 2,66€
 
 # Manufacturing
-![CNC machining the wooden walls](./images/cnc0.jpg)
+![CNC machining the wooden walls](./images/cnc0.webp)
 
 Luckily I have access to a CNC-Machine with which I could cut out the wooden plates in a few minutes. The casemaker extrusions were cut using a horizontal bandsaw. In heinseight I should have used a cross-cut saw for a better finish.
 
-![Box assembly finished](./images/table_assembly0.jpg)
+![Box assembly finished](./images/table_assembly0.webp)
 
 I probably put too many rivots, but it doesn't hurt the rigidity so...
 
-![Box assembly finished](./images/table_assembly1.jpg)
+![Box assembly finished](./images/table_assembly1.webp)
 
 The foam was cut and glued to the inside of the box.
