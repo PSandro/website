@@ -1,6 +1,6 @@
 baseURL = 'https://sandropischinger.de/'
 languageCode = 'en-us'
-title = "Sandro's geek blog"
+title = "Sandro's blog"
 theme = 'cactus'
 copyright = "Sandro Pischinger"
 [params]
