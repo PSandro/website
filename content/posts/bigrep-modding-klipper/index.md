@@ -43,7 +43,7 @@ After that we can compile Klipper and get a binary file `klipper.bin` that we la
 
 
 ## Flashing MCU
-The usual flashing procedure for SmoothieBoards is to place a `firmware.bin` file on the sd card which gets renamed to `firmware.bin` after successful flashing. However, BigRep modified the bootloader in such a way so that a matching `firmware.inf` file is required in addition to the `firmware.bin`.
+The usual flashing procedure for SmoothieBoards is to place a `firmware.bin` file on the sd card which gets renamed to `FIRMWARE.CUR` after successful flashing. However, BigRep modified the bootloader in such a way so that a matching `firmware.inf` file is required in addition to the `firmware.bin`.
 This file only contains a CRC16-XMODEM checksum of the binary file and can be calculated using the following script.
 
 ```python
