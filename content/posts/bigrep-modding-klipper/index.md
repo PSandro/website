@@ -90,6 +90,130 @@ Then insert the sd card back into the BoogieBoard and power up the machine. The 
 
 Once Klipper is flashed, the future flashing progress might be simplified by making use of Klipper's [SDCard updates](https://www.klipper3d.org/SDCard_Updates.html) feature.
 
+
+## Software Configuration
+Here are some parts of the `printer.cfg` config file for klipper. Note that the microstep settings of your stepper drivers might be different.
+```ini
+[printer]
+kinematics: cartesian
+max_velocity: 300
+max_accel: 400
+max_z_velocity: 5
+max_z_accel: 10
+
+[stepper_x]
+step_pin: !P1.0
+dir_pin: !P1.1
+enable_pin: !P0.15
+microsteps: 32
+rotation_distance: 120
+step_pulse_duration: 0.00005
+endstop_pin: !P1.18
+position_endstop: -6
+position_min: -6
+position_max: 1059
+homing_speed: 50
+
+[stepper_y]
+step_pin: !P1.4
+dir_pin: !P1.8
+enable_pin: !P0.16
+microsteps: 8
+rotation_distance: 36
+step_pulse_duration: 0.00005
+endstop_pin: !P1.20
+position_endstop: -6
+position_min: -6
+position_max: 1064
+homing_speed: 50
+
+[stepper_z]
+step_pin: !P1.9
+dir_pin: !P1.10
+enable_pin: !P0.17
+microsteps: 8
+rotation_distance: 2
+step_pulse_duration: 0.00005
+endstop_pin: !P1.22
+position_endstop: 0
+position_min: -2
+position_max: 1000
+
+[adc_temperature pt100_heater]
+temperature1: 43
+resistance1: 627
+temperature2: 75
+resistance2: 1285.808
+temperature3: 87
+resistance3: 2243.808
+temperature4: 193
+resistance4: 3904
+
+[adc_temperature pt100]
+temperature1: 9.25
+voltage1: 0.1123
+temperature2: 75.0
+voltage2: 0.8691
+temperature3: 82.2
+voltage3: 0.9497
+
+# The primary extruder T0
+[extruder]
+step_pin: P1.14
+dir_pin: P1.15
+enable_pin: !P0.18
+microsteps: 32
+rotation_distance: 37.42
+pressure_advance: 0.025
+nozzle_diameter: 1.0
+filament_diameter: 2.8500
+heater_pin: !P2.0
+sensor_type: pt100
+sensor_pin: P0.24
+min_temp: 10
+max_temp: 260
+min_extrude_temp: 210
+max_extrude_only_distance: 600
+
+[output_pin t0_move]
+pin: !P0.4
+pwm: False
+
+[heater_bed]
+heater_pin: P2.4
+sensor_type: pt100_heater
+sensor_pin: P0.25
+control: watermark
+max_delta: 1.0
+min_temp: 0
+max_temp: 120
+
+[verify_heater heater_bed]
+max_error: 200
+check_gain_time: 400
+heating_gain: 1
+
+[verify_heater extruder]
+check_gain_time: 40
+
+[heater_fan t0_fan]
+pin: P0.0
+heater: extruder
+
+[fan]
+pin: !P2.2
+
+[gcode_button e_stop_button]
+pin: !P1.24
+press_gcode:
+  M112
+
+[filament_switch_sensor t0_sensor]
+switch_pin: P1.25
+
+```
+
+
 ## Mechanical Issues
 ![X pulley](./images/pulley.jpg)
 
