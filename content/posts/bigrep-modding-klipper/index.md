@@ -44,39 +44,31 @@ After that we can compile Klipper and get a binary file `klipper.bin` that we la
 
 ## Flashing MCU
 The usual flashing procedure for SmoothieBoards is to place a `firmware.bin` file on the sd card which gets renamed to `FIRMWARE.CUR` after successful flashing. However, BigRep modified the bootloader in such a way so that a matching `firmware.inf` file is required in addition to the `firmware.bin`.
-This file only contains a CRC16-XMODEM checksum of the binary file and can be calculated using the following script.
+This file only contains a CRC16-CCIT checksum of the binary file and can be calculated using the following script.
 
 ```python
-#!/usr/bin/env python3
 """
 Calculates the crc value of a given file.
 
-
-modified by Sandro Pischinger on 31.5.2024
-    - set seed to 0xFFFF (default)
-    - remove unused blocksize
-    - use binascii
+Copyright (C) 2025 Sandro Pischinger
 """
-import struct
-import argparse
+import sys
+import os
 import binascii
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Calculate CRC for a given file")
-    parser.add_argument('filename', help="The binary file to calculate the CRC for")
-    parser.add_argument('-f', '--info_file', help='Output file for firmware metadata')
+    if len(sys.argv) != 2:
+        print("Usage: checksum.py <klipper.bin>")
+        exit(1)
 
-    args = parser.parse_args()
-
-    with open(args.filename, "rb") as f:
-        binData = f.read()
-
-    crc = binascii.crc_hqx(binData, 0xFFFF)
-    print(f"CRC overall: 0x{crc:04x}")
-
-    if args.info_file:
-        with open(args.info_file, "wb") as finfo:
-            finfo.write(struct.pack(">H", crc))
+    fw = sys.argv[1]
+    with open(fw, "rb") as f:
+        crc = binascii.crc_hqx(f.read(), 0xFFFF)
+    out_file = os.path.join(os.path.dirname(fw), 'firmware.inf')
+    with open(out_file, 'wb') as f:
+        f.write(crc.to_bytes(2, 'big'))
+    print(f"wrote crc 0x{crc:04x} to {out_file}")
 
 
 if __name__ == '__main__':
